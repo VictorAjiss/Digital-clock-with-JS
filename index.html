@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Js digital clock</title>
+	<style type="text/css">
+		body{
+			background-image: url(alphine2.jpg);
+			background-position: center;
+			background-size: 2900px;
+			background-repeat: no-repeat;
+			height: 100%;
+			margin-top: 400px;
+		}
+		.clock{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			font-size: 90px;
+			border: 3px solid black;
+			padding: 30px 50px 30px 50px;
+			margin-top: 0px;
+			text-align: center;
+			font-family: rowdies;
+		}
+	</style>
+</head>
+<body>
+	<div id="MyclockDisplay" class="clock"></div>
+	<script type="text/javascript">
+		function showTime(){
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			var session = "AM";
+
+			if (h == 0){
+				h = 12;
+				session = "AM";
+			}
+			if (h > 12){
+				h = h - 12;
+			}
+			h = (h < 10) ? "0" + h : h;
+			m = (m < 10) ? "0" + m : m;
+			s = (s < 10) ? "0" + s : s;
+
+			var time = h + ":" + m + ":" + s + "" + session;
+			document.getElementById("MyclockDisplay").innerText = time;
+			document.getElementById("MyclockDisplay").textContent = time; 
+			// body...
+			setTimeout(showTime, 1000);
+		}
+		showTime();
+	</script>
+</body>
+</html>
